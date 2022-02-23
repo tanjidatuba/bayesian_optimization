@@ -1,0 +1,30 @@
+#Global optimization is a challenging problem of finding an input that results in the minimum or maximum cost of a given objective function.
+#Bayesian optimization is a powerful strategy for finding the extrema of objective functions that are expensive to evaluate.
+
+# objective functionimport numpy as np
+import pandas as pd
+
+# objective function
+def objective(x, noise=0.1):
+	noise = np.random.normal(loc=0, scale=noise)
+	return (x**2 * sin(5 * pi * x)**6.0) + noise
+
+from numpy import *
+# grid-based sample of the domain [0,1]
+X = arange(0, 1, 0.01)
+
+y = [objective(x, 0) for x in X]
+y[:5]
+
+ynoise = [objective(x) for x in X]
+ynoise[:5]
+
+
+ix = argmax(y) 
+#Argmax is an operation that finds the argument that gives the maximum value from a target function
+
+print('Optima: x=%.3f, y=%.3f' % (X[ix], y[ix]))
+
+import os
+filename = os.path.join(dirname, 'relative/path/to/file/you/want')
+joblib.dump(pipeline, filename )
